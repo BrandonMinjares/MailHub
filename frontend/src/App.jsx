@@ -3,10 +3,9 @@ import {Route, HashRouter, Routes} from 'react-router-dom';
 
 import Register from './components/Register';
 import Login from './components/Login';
-
 import Dashboard from './components/Dashboard';
+import NavBar from './components/NavBar';
 import PrivateRoute from './components/PrivateRoute';
-
 import SharedContext from './components/SharedContext';
 
 // import Dummy from './components/Dummy';
@@ -18,7 +17,8 @@ import SharedContext from './components/SharedContext';
  * @return {object} JSX
  */
 function App() {
-  const [mailbox, setMailbox] = React.useState('Inbox');
+  const [mailbox, setMailbox] = React.useState('inbox');
+  const [mail, setMail] = React.useState([]);
 
   return (
     <HashRouter>
@@ -29,7 +29,9 @@ function App() {
           <Route path="/"
             element={
               <PrivateRoute>
-                <SharedContext.Provider value = {{mailbox, setMailbox}}>
+                <SharedContext.Provider value
+                  = {{mailbox, setMailbox, mail, setMail}}>
+                  <NavBar />
                   <Dashboard />
                 </SharedContext.Provider>
 
