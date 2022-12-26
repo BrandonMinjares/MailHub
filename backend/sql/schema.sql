@@ -1,5 +1,10 @@
 -- Dummy table --
 DROP TABLE IF EXISTS dummy;
-CREATE TABLE dummy(created TIMESTAMP WITH TIME ZONE);
+DROP TABLE IF EXISTS person CASCADE;
+DROP TABLE IF EXISTS mailbox CASCADE;
+DROP TABLE IF EXISTS email CASCADE;
 
--- Your database schema goes here --
+CREATE TABLE dummy(created TIMESTAMP WITH TIME ZONE);
+CREATE TABLE person(userID UUID UNIQUE PRIMARY KEY DEFAULT gen_random_uuid(), data jsonb);
+CREATE TABLE mailbox(mailboxID UUID UNIQUE PRIMARY KEY DEFAULT gen_random_uuid(), mailboxName VARCHAR(50) NOT NULL, userID UUID NOT NULL,FOREIGN KEY (userID) REFERENCES person(userID));
+CREATE TABLE email(mailID UUID UNIQUE PRIMARY KEY DEFAULT gen_random_uuid(), mailboxID UUID NOT NULL, mail jsonb, opened BOOLEAN DEFAULT FALSE, FOREIGN KEY (mailboxID) REFERENCES Mailbox(mailboxID));
