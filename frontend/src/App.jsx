@@ -1,7 +1,16 @@
 import React from 'react';
+import {Route, HashRouter, Routes} from 'react-router-dom';
 
-import Dummy from './components/Dummy';
-import Emoji from './components/Emoji';
+import Register from './components/Register';
+import Login from './components/Login';
+
+import Dashboard from './components/Dashboard';
+import PrivateRoute from './components/PrivateRoute';
+
+import SharedContext from './components/SharedContext';
+
+// import Dummy from './components/Dummy';
+// import Emoji from './components/Emoji';
 
 /**
  * Simple component with no state.
@@ -9,11 +18,27 @@ import Emoji from './components/Emoji';
  * @return {object} JSX
  */
 function App() {
+  const [mailbox, setMailbox] = React.useState('Inbox');
+
   return (
-    <div>
-      <Dummy />
-      <Emoji />
-    </div>
+    <HashRouter>
+      <div>
+        <Routes>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/"
+            element={
+              <PrivateRoute>
+                <SharedContext.Provider value = {{mailbox, setMailbox}}>
+                  <Dashboard />
+                </SharedContext.Provider>
+
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </div>
+    </HashRouter>
   );
 }
 
