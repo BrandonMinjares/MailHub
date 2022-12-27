@@ -2,10 +2,10 @@
 /**
  * @return {void}
  */
-export default function NavBar() {
+export default function Emails() {
   return (
     <div>
-        Navbar
+        emails
     </div>
   );
 }

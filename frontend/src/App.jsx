@@ -4,9 +4,9 @@ import {Route, HashRouter, Routes} from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import NavBar from './components/NavBar';
 import PrivateRoute from './components/PrivateRoute';
-import SharedContext from './components/SharedContext';
+import SideBar from './components/SideBar';
+import NavBar from './components/NavBar';
 
 // import Dummy from './components/Dummy';
 // import Emoji from './components/Emoji';
@@ -17,8 +17,9 @@ import SharedContext from './components/SharedContext';
  * @return {object} JSX
  */
 function App() {
-  const [mailbox, setMailbox] = React.useState('inbox');
+  // const [mailbox, setMailbox] = React.useState('inbox');
   const [mail, setMail] = React.useState([]);
+  const [mailbox, setMailbox] = React.useState('inbox');
 
   return (
     <HashRouter>
@@ -29,12 +30,9 @@ function App() {
           <Route path="/"
             element={
               <PrivateRoute>
-                <SharedContext.Provider value
-                  = {{mailbox, setMailbox, mail, setMail}}>
-                  <NavBar />
-                  <Dashboard />
-                </SharedContext.Provider>
-
+                <NavBar value={{mail, setMail}}/>
+                <SideBar value = {{mailbox, setMailbox}}/>
+                <Dashboard value = {{mail, setMail, mailbox, setMailbox}}/>
               </PrivateRoute>
             }
           />

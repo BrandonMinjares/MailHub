@@ -1,13 +1,11 @@
-import SideBar from './SideBar';
-
+import Emails from './Emails';
 /**
  * @return {void}
  */
-export default function Dashboard({mail, setMail}) {
+export default function Dashboard() {
   return (
     <div>
-      <SideBar />
-      Emails
+      <Emails />
     </div>
   );
 }
