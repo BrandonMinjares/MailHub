@@ -17,7 +17,6 @@ import NavBar from './components/NavBar';
  * @return {object} JSX
  */
 function App() {
-  // const [mailbox, setMailbox] = React.useState('inbox');
   const [mail, setMail] = React.useState([]);
   const [mailbox, setMailbox] = React.useState('inbox');
 
@@ -30,9 +29,10 @@ function App() {
           <Route path="/"
             element={
               <PrivateRoute>
-                <NavBar values = {{mail, setMail}}/>
-                <SideBar values = {{mailbox: mailbox, setMailbox: setMailbox}}/>
-                <Dashboard values = {{mail: mail, setMail: setMail}}/>
+                <NavBar values = {{setMail}}/>
+                <SideBar values = {{setMailbox: setMailbox}}/>
+                <Dashboard values = {{mail: mail, setMail: setMail,
+                  mailbox: mailbox}}/>
               </PrivateRoute>
             }
           />

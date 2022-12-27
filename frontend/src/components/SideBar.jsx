@@ -9,9 +9,10 @@ import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import InboxIcon from '@mui/icons-material/Inbox';
 
 /**
+ * @param {Object} props
  * @return {void}
  */
-export default function SideBar({mailbox, setMailbox}) {
+export default function SideBar(props) {
   /**
    * @return {void}
    */
@@ -19,9 +20,10 @@ export default function SideBar({mailbox, setMailbox}) {
     localStorage.clear();
     window.location.href = 'http://localhost:3000/#/login';
   }
+  const {setMailbox} = props.values;
+
   return (
     <div>
-      {mailbox}
       <div>
         <ListItemButton
           onClick={() => setMailbox('inbox')}

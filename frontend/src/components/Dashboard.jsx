@@ -6,7 +6,7 @@ import Emails from './Emails';
 export default function Dashboard(props) {
   return (
     <div>
-      {props.mailbox}
+      {props.values.mailbox}
       <Emails />
     </div>
   );
