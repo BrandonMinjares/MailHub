@@ -1,35 +1,18 @@
 #
-# Email Messaging Project Backend
+# Mailhub Backend
 #
 
 openapi: '3.0.3'
 
 info:
-  description: Email Messaging Project Backend
+  description: Mailhub Backend
   version: 0.1.0
-  title: Email Messaging Project Backend
+  title: Mailhub Backend
 
 servers:
   - url: http://localhost:3010/v0
 
 paths:
-  /dummy:
-    get:
-      description: Dummy Endpoint
-      responses:
-        200:
-          description: Succesful
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DummyResponse'
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
   /login:
     post:
       description: Login
@@ -77,6 +60,114 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnexpectedError'
 
+  /logout:
+    post:
+      description: Logout
+      responses:
+        200:
+          description: Logout User Response
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnexpectedError'
+
+  /email:
+    get:
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - in: query
+          name: mailbox
+          required: false
+          description: Get all emails in a specific mailbox
+          schema:
+            $ref: '#/components/schemas/EmailArray'
+      responses:
+        200:
+          description: GET EMAIL
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailArray'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnexpectedError'
+    post:
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Request Body
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailRequest'
+      responses:
+        200:
+          description:  Return Email posted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailArray'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnexpectedError'
+  
+  /email/{id}:      
+    get:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id 
+          required: true
+          description: Get mail by ID of user
+          schema:
+            type: string
+
+      responses:
+        200:
+          description: Email With Content Property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailArr'
+        404:
+          description: Not Found 
+
+    put:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id 
+          required: true
+          description: Get mail by ID of user
+          schema:
+            type: string
+
+      responses:
+        200:
+          description: Email With Content Property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailArr'
+        404:
+          description: Not Found 
+
+      
+
+      
 components:
   schemas:
     UnexpectedError:
@@ -89,24 +180,6 @@ components:
           format: int32
         message:
           type: string
-
-    Error:
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-      required:
-        - code
-        - message
-
-    DummyResponse:
-      properties:
-        message:
-          type: string
-      required:
-        - message
 
     Credentials:
       type: object
@@ -157,3 +230,84 @@ components:
       required:
         - email
         - accessToken
+
+    EmailArray:
+      type: array
+      properties:
+        items:
+          $ref: '#/components/schemas/EmailRes'
+
+    EmailArr:
+      type: array
+      properties:
+        items:
+          $ref: '#/components/schemas/EmailSingle'
+
+    EmailRes:
+      type: object
+      properties:
+        SenderEmail:
+          type: string
+          format: email
+        ReceiverEmail:
+          type: string
+          format: email
+        subject:
+          type: string
+        body:
+          type: string
+        sent_time:
+          type: string
+          format: date-time
+      required:
+        - SenderEmail
+        - ReceiverEmail
+        - subject
+        - body
+        - sent_time
+
+    EmailSingle:
+      type: object
+      properties:
+        mailid:
+          type: string
+        mail:
+          type: object
+          properties:
+            to:
+              type: string
+              format: email
+            from:
+              type: string
+              format: email
+            subject:
+              type: string
+            content:
+              type: string
+            sent:
+              type: string
+              format: date-time
+      required:
+        - mailid
+        - mail
+
+    EmailRequest:
+      type: object
+      properties:
+        ReceiverEmail:
+          type: string
+          format: email
+        subject:
+          type: string
+        body:
+          type: string
+      required:
+        - ReceiverEmail
+        - subject
+        - body
+
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
