@@ -29,7 +29,7 @@ function App() {
           <Route path="/"
             element={
               <PrivateRoute>
-                <NavBar values = {{setMail}}/>
+                <NavBar values = {{setMail: setMail}}/>
                 <SideBar values = {{setMailbox: setMailbox}}/>
                 <Dashboard values = {{mail: mail, setMail: setMail,
                   mailbox: mailbox}}/>
