@@ -156,3 +156,15 @@ exports.putEmail = async (req, res) => {
 };
 */
 
+exports.searchEmail = async (req, res) => {
+  console.log(req.query.search);
+  const find = 'SELECT * FROM email e WHERE '+
+  `e."mail" ->>'content' like '%${req.query.search}%'`;
+
+  const query = {
+    text: find,
+  };
+
+  const {rows} = await pool.query(query);
+  res.status(200).json(rows);
+};

@@ -121,6 +121,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnexpectedError'
+  /results:
+    get:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          required: false
+          description: Get all emails in a specific mailbox
+          schema:
+            type: string
+      responses:
+        200:
+          description:  Return Email posted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailArray'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnexpectedError'
   
   /email/{id}:      
     get:
@@ -305,6 +329,13 @@ components:
         - ReceiverEmail
         - subject
         - body
+
+    
+    Search:
+      type: object
+      properties:
+        text:
+          type: string
 
   securitySchemes:
     bearerAuth:            # arbitrary name for the security scheme
