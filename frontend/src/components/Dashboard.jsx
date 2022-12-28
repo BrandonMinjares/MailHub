@@ -41,7 +41,7 @@ export default function Dashboard(props) {
 
   React.useEffect(() => {
     fetchMail(mailbox, setMail);
-  }, [mailbox]);
+  }, [mailbox, setMail]);
 
   return (
     <div>
