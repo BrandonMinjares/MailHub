@@ -46,7 +46,6 @@ export default function NavBar() {
         <TextField
           margin="normal"
           required
-          fullWidth
           id="search"
           label="search"
           name="search"
@@ -57,7 +56,6 @@ export default function NavBar() {
         <Button
           type="submit"
           aria-label='Log In'
-          fullWidth
           variant="contained"
           sx={{mt: 3, mb: 2}}
         >
