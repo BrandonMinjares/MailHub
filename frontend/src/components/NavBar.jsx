@@ -3,12 +3,9 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 /**
- * @param {Object} props
  * @return {void}
  */
-export default function NavBar(props) {
-  const {setMail} = props.values;
-
+export default function NavBar() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const item = localStorage.getItem('user');
@@ -33,7 +30,7 @@ export default function NavBar(props) {
         return res.json();
       })
       .then((json) => {
-        setMail(json);
+        // setMail(json);
       });
   };
   return (

@@ -34,9 +34,7 @@ app.post('/v0/login', auth.login);
 app.post('/v0/register', auth.register);
 
 app.get('/v0/email', auth.check, mail.getAll);
-app.get('/v0/email/:id', auth.check, mail.getById);
-// moving email
-app.put('/v0/email/:id', auth.check, mail.trashEmail);
+
 app.get('/v0/results', auth.check, mail.searchEmail);
 app.post('/v0/email', auth.check, mail.postEmail);
 

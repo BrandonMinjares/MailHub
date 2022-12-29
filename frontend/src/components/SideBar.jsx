@@ -1,4 +1,6 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
+import SharedContext from './SharedContext';
+
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -9,10 +11,11 @@ import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import InboxIcon from '@mui/icons-material/Inbox';
 
 /**
- * @param {Object} props
  * @return {void}
  */
-export default function SideBar(props) {
+export default function SideBar() {
+  const {setMailbox} = useContext(SharedContext);
+
   /**
    * @return {void}
    */
@@ -20,7 +23,6 @@ export default function SideBar(props) {
     localStorage.clear();
     window.location.href = 'http://localhost:3000/#/login';
   }
-  const {setMailbox} = props.values;
 
   return (
     <div>
