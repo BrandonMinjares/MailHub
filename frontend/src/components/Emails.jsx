@@ -5,6 +5,7 @@ import {TableContainer, Table, TableHead, TableBody, TableRow,
 import Checkbox from '@mui/material/Checkbox';
 
 const fetchMail = (mailbox, setMail) => {
+  if (mailbox === '') return;
   const item = localStorage.getItem('user');
   if (!item) {
     return;

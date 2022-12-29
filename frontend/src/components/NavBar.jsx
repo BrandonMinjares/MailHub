@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
  * @return {void}
  */
 export default function NavBar() {
-  const {setMail} = useContext(SharedContext);
+  const {setMail, setMailbox} = useContext(SharedContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,6 +37,7 @@ export default function NavBar() {
       })
       .then((json) => {
         setMail(json);
+        setMailbox('');
       });
   };
   return (
@@ -60,7 +61,7 @@ export default function NavBar() {
           variant="contained"
           sx={{mt: 3, mb: 2}}
         >
-              Log In
+              Search
         </Button>
       </Box>
     </div>
