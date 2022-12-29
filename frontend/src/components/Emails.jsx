@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import SharedContext from './SharedContext';
 
 const fetchMail = (mailbox, setMail) => {
@@ -8,7 +8,7 @@ const fetchMail = (mailbox, setMail) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`http://localhost:3010/v0/email?mailbox=${mailbox}`, {
+  fetch(`http://localhost:3010/v0/email?mailbox=` + mailbox, {
     method: 'get',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
@@ -36,11 +36,12 @@ const fetchMail = (mailbox, setMail) => {
  * @return {void}
  */
 export default function Emails() {
-  const {mail, setMail, mailbox} = useContext(SharedContext);
-
+  const {mailbox} = useContext(SharedContext);
+  const [mail, setMail] = useState([]);
   React.useEffect(() => {
     fetchMail(mailbox, setMail);
-  }, [mailbox, setMail]);
+    // nothing in array, it will only run once
+  }, [mailbox]);
 
   return (
     <div>
