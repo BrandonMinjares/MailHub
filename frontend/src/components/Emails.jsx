@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import SharedContext from './SharedContext';
 import {TableContainer, Table, TableHead, TableBody, TableRow,
   TableCell, Paper} from '@mui/material';
+import Checkbox from '@mui/material/Checkbox';
 
 const fetchMail = (mailbox, setMail) => {
   const item = localStorage.getItem('user');
@@ -49,6 +50,14 @@ export default function Emails() {
       <Table sx={{minWidth: 650}} aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell padding="checkbox">
+              <Checkbox
+                color="primary"
+                inputProps={{
+                  'aria-label': 'select all desserts',
+                }}
+              />
+            </TableCell>
             <TableCell align="right">From</TableCell>
             <TableCell align="right">Subject</TableCell>
             <TableCell align="right">Content</TableCell>
@@ -61,6 +70,14 @@ export default function Emails() {
               key={row.mailid}
               sx={{'&:last-child td, &:last-child th': {border: 0}}}
             >
+              <TableCell key={row.mailid} padding="checkbox">
+                <Checkbox
+                  color="primary"
+                  inputProps={{
+                    'aria-label': 'select all desserts',
+                  }}
+                />
+              </TableCell>
               <TableCell align="right">{row.mail.from}</TableCell>
               <TableCell align="right">{row.mail.subject}</TableCell>
               <TableCell align="right">{row.mail.content}</TableCell>
@@ -70,5 +87,5 @@ export default function Emails() {
         </TableBody>
       </Table>
     </TableContainer>
-);
+  );
 }
