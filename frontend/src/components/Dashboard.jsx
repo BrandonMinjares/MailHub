@@ -2,7 +2,7 @@
 import SideBar from './SideBar';
 import NavBar from './NavBar';
 import Emails from './Emails';
-
+import '../styles.css';
 
 /**
  * @return {void}
@@ -11,8 +11,10 @@ export default function Dashboard() {
   return (
     <div>
       <NavBar />
-      <SideBar />
-      <Emails />
+      <div className='test'>
+        <SideBar />
+        <Emails />
+      </div>
     </div>
   );
 }

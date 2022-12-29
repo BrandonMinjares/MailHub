@@ -67,6 +67,7 @@ export default function Emails() {
         <TableBody>
           {mail.map((row) => (
             <TableRow
+              onClick={() => console.log(row.mailid)}
               key={row.mailid}
               sx={{'&:last-child td, &:last-child th': {border: 0}}}
             >
