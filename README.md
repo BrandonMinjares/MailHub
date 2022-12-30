@@ -94,10 +94,3 @@ This project uses Node.js, Express, ReactJS, and has a RESTful E-Mail API backed
     ```
       $ npm start
     ```
-    
-    
-## Test API Endpoints using Swagger by navigating to backend and running this command:
-    ```
-      $ npm start
-    ```
-    Open http://localhost:3010/v0/api-docs/
