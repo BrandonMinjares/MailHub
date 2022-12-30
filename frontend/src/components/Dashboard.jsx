@@ -26,6 +26,8 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 import SideBar from './SideBar';
 import Emails from './Emails';
+import NavBar from './NavBar';
+
 import '../styles.css';
 
 const drawerWidth = 240;
@@ -226,6 +228,8 @@ export default function Dashboard() {
               >
               </Typography>
 
+              <NavBar />
+
               <IconButton color="inherit"
                 onClick={handleClickOpen}
                 aria-label='openCompose'
@@ -243,6 +247,7 @@ export default function Dashboard() {
                 px: [1],
               }}
             >
+
               <IconButton onClick={toggleDrawer}
                 aria-label='toggleDrawer'
               >

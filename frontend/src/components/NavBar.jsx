@@ -4,6 +4,7 @@ import SharedContext from './SharedContext';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import '../styles.css';
 
 
 /**
@@ -42,22 +43,25 @@ export default function NavBar() {
   };
   return (
     <div>
-      <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
+      <Box component="form" onSubmit={handleSubmit}
+        noValidate>
         <TextField
+          InputLabelProps={{shrink: false}}
           margin="normal"
           required
           id="search"
-          label="search"
+          placeholder="Search in mail"
           name="search"
-          autoComplete="search"
-          autoFocus
           aria-label='Search'
+          sx={{width: {sm: 200, md: 650}, backgroundColor: 'white'}}
         />
         <Button
           type="submit"
           aria-label='Log In'
           variant="contained"
-          sx={{mt: 3, mb: 2}}
+          sx={{mt: 3, mb: 2, bgcolor: 'white',
+            color: 'black', marginRight: '210px', marginLeft: '20px',
+          }}
         >
               Search
         </Button>
