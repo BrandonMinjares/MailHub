@@ -12,7 +12,6 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Button from '@mui/material/Button';
@@ -277,9 +276,7 @@ export default function Dashboard() {
               <Grid container spacing={3}>
                 {/* Recent Orders */}
                 <Grid item xs={12}>
-                  <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
-                    <Emails />
-                  </Paper>
+                  <Emails />
                 </Grid>
               </Grid>
             </Container>
