@@ -60,7 +60,7 @@ This project uses Node.js, Express, ReactJS, and has a RESTful E-Mail API backed
     ```
     
 ## Step 4:
-  Start the development database:
+  Start the development database inside 'backend':
     ```
       $ docker-compose up -d
     ```
@@ -73,12 +73,7 @@ This project uses Node.js, Express, ReactJS, and has a RESTful E-Mail API backed
     ```
       $ docker-compose down
     ```
-   
-   To start the dev server, run the following command:
-    ```
-      $ npm start
-    ```
-
+    
    To execute tests run the following command:
     ```
       $ npm test
@@ -88,3 +83,24 @@ This project uses Node.js, Express, ReactJS, and has a RESTful E-Mail API backed
     ```
      $ npm run lint
     ```
+    
+    
+## Step 5:
+   Create a separate terminal while the development database is still runing. Navigate to the project directory and run this command:
+    ```
+      $ npm install
+    ```
+   To start the front end environment, run the following command:
+    ```
+      $ npm start
+    ```
+    
+## Step 6:
+    Open http://localhost:3000/
+    
+    
+## Test API Endpoints using Swagger by navigating to backend and running this command:
+    ```
+      $ npm start
+    ```
+    Open http://localhost:3010/v0/api-docs/
