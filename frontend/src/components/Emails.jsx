@@ -82,7 +82,8 @@ export default function Emails() {
               </TableCell>
               <TableCell align="right">{row.mail.from}</TableCell>
               <TableCell align="right">{row.mail.subject}</TableCell>
-              <TableCell align="right">{row.mail.content}</TableCell>
+              <TableCell align="right">{row.mail.content.substring(0, 10)}
+              </TableCell>
               <TableCell align="right">{row.mail.sent}</TableCell>
             </TableRow>
           ))}
