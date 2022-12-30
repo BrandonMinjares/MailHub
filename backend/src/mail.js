@@ -68,7 +68,6 @@ exports.getById = async (req, res) => {
   };
 
   await pool.query(query2);
-
   res.status(200).json(rows);
 };
 
