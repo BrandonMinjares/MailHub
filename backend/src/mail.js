@@ -156,7 +156,7 @@ exports.putEmail = async (req, res) => {
 */
 
 exports.searchEmail = async (req, res) => {
-  console.log(req.query.search);
+  // console.log(req.query.search);
   const find = 'SELECT * FROM email e, person p WHERE '+
   `e."mail" ->>'content' like '%${req.query.search}%' `+
   `AND P."data" ->>'email' = $1`;

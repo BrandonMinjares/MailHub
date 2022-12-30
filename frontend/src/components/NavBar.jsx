@@ -53,14 +53,14 @@ export default function NavBar() {
           placeholder="Search in mail"
           name="search"
           aria-label='Search'
-          sx={{width: {sm: 200, md: 650}, backgroundColor: 'white'}}
+          sx={{width: {sm: 200, md: 800}, backgroundColor: 'white'}}
         />
         <Button
           type="submit"
           aria-label='Log In'
           variant="contained"
           sx={{mt: 3, mb: 2, bgcolor: 'white',
-            color: 'black', marginRight: '210px', marginLeft: '20px',
+            color: 'black', marginRight: '290px', marginLeft: '20px',
           }}
         >
               Search
