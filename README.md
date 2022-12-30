@@ -86,17 +86,14 @@ This project uses Node.js, Express, ReactJS, and has a RESTful E-Mail API backed
     
     
 ## Step 5:
-   Create a separate terminal while the development database is still runing. Navigate to the project directory and run this command:
+   Create a separate terminal while the development database is still running. Navigate to the project directory and run this command:
     ```
       $ npm install
     ```
-   To start the front end environment, run the following command:
+   Then:
     ```
       $ npm start
     ```
-    
-## Step 6:
-    Open http://localhost:3000/
     
     
 ## Test API Endpoints using Swagger by navigating to backend and running this command:
