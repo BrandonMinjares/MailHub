@@ -1,5 +1,5 @@
 # MailHub
-An Email Messenging Application where users can send, receive, trash, reply to, and search for emails
+An Email messaging application where users can send, receive, trash, reply to, and search for emails.
 
 # Technologies
 This project uses Node.js, Express, ReactJS, and has a RESTful E-Mail API backed by a PostgreSQL database with associated tests to demonstrate it works.
